@@ -1,5 +1,3 @@
-require 'pry'
-
 class Post < ActiveRecord::Base
   validates :title, presence: true
   validate :is_clickbait?
