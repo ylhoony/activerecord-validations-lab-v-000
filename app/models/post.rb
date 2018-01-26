@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
   validates :category, inclusion: { in: ["Fiction", "Non-Fiction"] }
 
   def clickbait?
-    !title.include?("Won't Believe") || !title.include?("Secret") || !title.include?("Guess") || (a =~ /([t][o][p]|[T][o][p])\s{1}\d+/).nil?
+    !title.include?("Won't Believe") || !title.include?("Secret") || !title.include?("Guess") || (title =~ /([t][o][p]|[T][o][p])\s{1}\d+/).nil?
   end
 
 end
