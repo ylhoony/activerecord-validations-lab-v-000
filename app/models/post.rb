@@ -7,7 +7,9 @@ class Post < ActiveRecord::Base
 
   def has_clickbait?
     clickbaits = [title.include?("Won't Believe"), title.include?("Secret"), title.include?("Guess"), !(title =~ /([t][o][p]|[T][o][p])\s{1}\d+/).nil?]
-    clickbaits.any {|clickbait| clickbait == true }
+    if !clickbaits.include?(true)
+      errors.add(:title, "must include clickbait-y")
+    end
   end
 
 end
