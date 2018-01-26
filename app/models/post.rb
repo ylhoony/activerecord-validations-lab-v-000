@@ -6,7 +6,8 @@ class Post < ActiveRecord::Base
   validates :category, inclusion: { in: ["Fiction", "Non-Fiction"] }
 
   def clickbait?
-    
+    clickbaits = ["Won't Believe", "Secret", "Top #{/\d/}", or "Guess"]
+    title.include?
   end
-  
+
 end
