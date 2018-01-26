@@ -14,11 +14,9 @@ class Post < ActiveRecord::Base
     /Guess/i
   ]
 
-  def :is_clickbait?
-    binding.pry
-    clickbaits = [title.include?("Won't Believe"), title.include?("Secret"), title.include?("Guess"), !!(title =~ /([t][o][p]|[T][o][p])\s{1}\d+/)]
-    if !clickbaits.include?(true)
-      errors.add(:title, "must include clickbait-y")
+  def is_clickbait?
+    if CLICKBAIT_PATTERNS.none? { |pat| pat.match title }
+      errors.add(:title, "must be clickbait")
     end
   end
 
