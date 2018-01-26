@@ -8,6 +8,7 @@ class Post < ActiveRecord::Base
   validates :category, inclusion: { in: ["Fiction", "Non-Fiction"] }
 
   def must_have_clickbait
+    binding.pry
     clickbaits = [title.include?("Won't Believe"), title.include?("Secret"), title.include?("Guess"), !(title =~ /([t][o][p]|[T][o][p])\s{1}\d+/).nil?]
     if !clickbaits.include?(true)
       errors.add(:title, "must include clickbait-y")
